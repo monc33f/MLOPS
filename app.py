@@ -9,26 +9,6 @@ import os
 from datetime import datetime
 import socket
 
-# Try to find an available port
-def find_available_port(start_port=8501, max_port=8999):
-    for port in range(start_port, max_port):
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            try:
-                s.bind(('localhost', port))
-                return port
-            except OSError:
-                continue
-    return None
-
-# Set environment variables
-port = find_available_port()
-if port is None:
-    raise RuntimeError("Could not find an available port")
-
-os.environ['STREAMLIT_SERVER_PORT'] = str(port)
-os.environ['STREAMLIT_SERVER_ADDRESS'] = 'localhost'
-os.environ['STREAMLIT_SERVER_HEADLESS'] = 'true'
-
 # Set page config with Docker-specific settings
 st.set_page_config(
     page_title="Medical Image Classification",

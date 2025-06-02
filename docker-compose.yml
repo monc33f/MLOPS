@@ -10,7 +10,6 @@ services:
     command: mlflow server --host 0.0.0.0 --port 5000
     networks:
       - ml_network
-    restart: unless-stopped
 
   streamlit:
     build:
@@ -20,16 +19,10 @@ services:
       - "8999:8999"
     volumes:
       - .:/app
-    environment:
-      - STREAMLIT_SERVER_PORT=8999
-      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
-      - STREAMLIT_SERVER_HEADLESS=true
-      - PYTHONUNBUFFERED=1
     networks:
       - ml_network
     depends_on:
       - mlflow
-    restart: always
 
 networks:
   ml_network:

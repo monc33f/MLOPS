@@ -1,7 +1,17 @@
 [server]
 port = 8999
-address = "127.0.0.1"
+address = "0.0.0.0"
 headless = true
+enableCORS = false
+enableXsrfProtection = false
 
 [browser]
-serverAddress = "localhost" 
+serverAddress = "localhost"
+gatherUsageStats = false
+
+[theme]
+primaryColor = "#F63366"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F2F6"
+textColor = "#262730"
+font = "sans serif" 
