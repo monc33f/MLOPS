@@ -3,7 +3,7 @@
 A deep learning application for classifying brain tumors using MRI images.
 
 ## GitHub Actions Status
-[![Docker Build and Test](https://github.com/{username}/{repository}/actions/workflows/docker-build.yml/badge.svg)](https://github.com/{username}/{repository}/actions/workflows/docker-build.yml)
+[![Python Application](https://github.com/{username}/{repository}/actions/workflows/python-app.yml/badge.svg)](https://github.com/{username}/{repository}/actions/workflows/python-app.yml)
 
 ## Overview
 This project uses Streamlit and MLflow to serve a deep learning model that classifies brain MRI images into four categories:
@@ -12,41 +12,63 @@ This project uses Streamlit and MLflow to serve a deep learning model that class
 - No Tumor
 - Pituitary
 
-## CI/CD Pipeline
-The project uses GitHub Actions for continuous integration and deployment:
+## Project Structure
+```
+.
+├── data1/               # Training and testing data
+├── pipelines/           # Training pipeline modules
+├── src/                 # Source code
+├── tests/              # Test files
+├── .github/            # GitHub Actions workflows
+├── mlruns/             # MLflow tracking files
+├── .streamlit/         # Streamlit configuration
+├── run_pipeline.py     # Main pipeline execution script
+└── requirements.txt    # Python dependencies
+```
 
-1. **Automated Testing**: On every push and pull request to main/master branches:
-   - Builds Docker containers
-   - Runs integration tests
-   - Checks service health
-   - Verifies model availability
+## Setup and Installation
 
-2. **Container Build**:
-   - Builds Streamlit application container
-   - Builds MLflow tracking server container
-   - Tests container connectivity
-
-## Local Development
 1. Clone the repository:
    ```bash
    git clone https://github.com/{username}/{repository}.git
    cd {repository}
    ```
 
-2. Start the services:
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Start the services:
    ```bash
    docker compose up --build
    ```
 
-3. Access the applications:
+4. Access the applications:
    - Streamlit: http://localhost:8999
    - MLflow: http://localhost:5000
 
+## Running the Pipeline
+```bash
+python run_pipeline.py
+```
+
 ## Running Tests
 ```bash
-pip install pytest requests
 pytest tests/
 ```
+
+## CI/CD Pipeline
+The project uses GitHub Actions for continuous integration and deployment:
+
+1. **Automated Testing**: On every push and pull request to main branch:
+   - Runs Python tests
+   - Performs code linting
+   - Verifies dependencies
+
+2. **Quality Checks**:
+   - Flake8 for code style
+   - Pytest for unit testing
 
 ## Contributing
 1. Fork the repository
@@ -56,4 +78,7 @@ pytest tests/
 5. Create a Pull Request
 
 ## License
-[Add your license here] 
+[MIT License](LICENSE) or specify your chosen license
+
+## Contact
+Add your contact information or ways to reach out for questions and contributions. 
